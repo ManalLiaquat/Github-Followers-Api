@@ -7,20 +7,47 @@ if ('serviceWorker' in navigator) {
 }
 
 /* app script */
+let titleText = document.querySelector('#titleText');
+let navText = document.querySelector('#navText');
+let err = document.querySelector('#err');
+
 const input = document.querySelector("#search");
 const btn = document.querySelector("#btn");
 const main = document.querySelector("#div");
 
-btn.addEventListener('click', async e => {
-    myFollowers();
+
+window.addEventListener('load', event => {
+    const default_value = 'ManalLiaquat';
+    myFollowers(default_value);
+})
+input.addEventListener('keydown', (event) => {
+    if (event.keyCode === 13) {
+        myFollowers(input.value);
+        input.value = "";
+    }
+});
+btn.addEventListener('click', e => {
+    myFollowers(input.value);
+    input.value = "";
 })
 
 
-async function myFollowers() {
-    const default_value = 'ManalLiaquat';
-    const res = await fetch(`https://api.github.com/users/${input.value}/followers`)
+async function myFollowers(val) {
+    const res = await fetch(`https://api.github.com/users/${val}/followers`)
     const json = await res.json();
     console.log(json);
+
+    if (!(json.message)) {
+        titleText.innerHTML = `${val}  | Github Followers`;
+        navText.innerHTML = `${val}  | Github Followers`;
+        err.innerHTML = '';
+    } else {
+        main.innerHTML = '';
+        err.innerHTML = `THIS ID (${val}) IS NOT EXIST ON GITHUB.COM`
+    }
+    if (json.length === 0) {
+        err.innerHTML = `THIS ID (${val}) DOESN'T HAVE FOLLOWERS`
+    }
 
     main.innerHTML = json.map((v, i) => {
 
