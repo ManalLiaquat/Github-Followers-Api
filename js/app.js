@@ -7,14 +7,18 @@ if ('serviceWorker' in navigator) {
 }
 
 /* app script */
+const input = document.querySelector("#search");
+const btn = document.querySelector("#btn");
 const main = document.querySelector("#div");
-window.addEventListener('load', async e => {
+
+btn.addEventListener('click', async e => {
     myFollowers();
 })
 
 
 async function myFollowers() {
-    const res = await fetch(`https://api.github.com/users/ManalLiaquat/followers`)
+    const default_value = 'ManalLiaquat';
+    const res = await fetch(`https://api.github.com/users/${input.value}/followers`)
     const json = await res.json();
     console.log(json);
 
