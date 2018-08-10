@@ -15,20 +15,27 @@ const input = document.querySelector("#search");
 const btn = document.querySelector("#btn");
 const main = document.querySelector("#div");
 
-
 window.addEventListener('load', event => {
     const default_value = 'ManalLiaquat';
     myFollowers(default_value);
 })
 input.addEventListener('keydown', (event) => {
     if (event.keyCode === 13) {
-        myFollowers(input.value);
-        input.value = "";
+        if (input.value !== '') {
+            myFollowers(input.value);
+            input.value = "";
+        } else {
+            alert('Please enter a username');
+        }
     }
 });
 btn.addEventListener('click', e => {
-    myFollowers(input.value);
-    input.value = "";
+    if (input.value !== '') {
+        myFollowers(input.value);
+        input.value = "";
+    } else {
+        alert('Please enter a username');
+    }
 })
 
 
@@ -62,6 +69,7 @@ async function myFollowers(val) {
         </div>
         `
     });
+
 }
 
 /* alternate method */
