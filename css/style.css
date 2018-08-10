@@ -48,7 +48,10 @@ h1{
     font-size: 15pt;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-#search:hover, #btn:hover{
+#search{
+    box-shadow: 1px 1px 1px 1px black
+}
+#btn:hover{
     box-shadow: 1px 1px 1px 1px black
 }
 #search:focus{
