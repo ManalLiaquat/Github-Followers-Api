@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Manal Liaquat | Github Followers</title>
+    <title id="titleText"></title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="shortcut icon" href="./icon/app-icon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -18,17 +18,20 @@
     <nav class="navbar navbar-dark bg-dark sticky-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Manal Liaquat | Github Followers</a>
+                <a class="navbar-brand" href="#" id="navText"></a>
             </div>
         </div>
     </nav>
     <div class="d-flex flex-nowrap">
-        <input type="search" name="search" class="form-control" id="search">
+        <input type="search" name="search" class="form-control" id="search" placeholder="e.g. ManalLiaquat" >
         <button class="btn btn-info btn-lg" id="btn"><i class="fa fa-search"></i></button>
     </div>
-    <br>
-    <div class="container-fluid d-flex flex-wrap" id="div">
+    <hr>
+    <center><div id="err"></div></center>
+    <div class="container-fluid">
         <!-- dynamic content goes here -->
+        <div class="d-flex flex-wrap" id="div">
+        </div>
     </div>
     <br>
 
