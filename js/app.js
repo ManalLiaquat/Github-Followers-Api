@@ -7,6 +7,7 @@ if ('serviceWorker' in navigator) {
 }
 
 /* app script */
+
 let titleText = document.querySelector('#titleText');
 let navText = document.querySelector('#navText');
 let err = document.querySelector('#err');
@@ -56,7 +57,14 @@ async function myFollowers(val) {
         err.innerHTML = `THIS ID (${val}) DOESN'T HAVE FOLLOWERS`
     }
 
-    main.innerHTML = json.map((v, i) => {
+    // for (let i = 0; i < json.length; i++) {
+    //     const followersRes = await fetch(json[i].followers_url);
+    //     const followersJson = await followersRes.json();
+    //     console.log(followersJson.length)   
+    // }
+    
+    main.innerHTML = json.map( (v, i) => {
+        
 
         return `
         <div class="card" style="width: 18rem; margin:10px;">
@@ -64,6 +72,17 @@ async function myFollowers(val) {
             <div class="card-body" style="padding:10px;">
                 <h6 class="card-title">${v.login}</h6>
                 <p class="card-text">UserID: ${v.id}</p>
+                <p>
+                    <button class="btn text-danger" title="Followers">
+                        <i class="fa fa-users fa-sm"></i> <span class="badge badge-pill badge-dark">${alert('will be update soon')}</span>
+                    </button>
+                    <button class="btn text-danger" title="Followings">
+                        <i class="fa fa-user-check fa-sm"></i> <span class="badge badge-pill badge-dark">${alert('will be update soon')}</span>
+                    </button>
+                    <button class="btn text-danger" title="Repos">
+                        <i class="fa fa-angle-double-up fa-sm"></i> <span class="badge badge-pill badge-dark">${alert('will be update soon')}</span>
+                    </button>
+                </p>
                 <a href="${v.html_url}" target="_blank" class="btn btn-success btn-block">Goto Profile</a>
             </div>
         </div>
