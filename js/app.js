@@ -39,8 +39,24 @@ btn.addEventListener('click', e => {
     }
 })
 
+// async function countFollowers(username) {
+//     const res = await fetch(`https://api.github.com/users/${username}/followers`)
+//     const json = await res.json();
+//     return json.length;
+// }
+// async function countFollowings(username) {
+//     const res = await fetch(`https://api.github.com/users/${username}/following`)
+//     const json = await res.json();
+//     return json.length;
+// }
+// async function countRepos(username) {
+//     var res = await fetch(`https://api.github.com/users/${username}/repos`)
+//     const json = await res.json();
+//     return json.length;
+// }
 
 async function myFollowers(val) {
+
     const res = await fetch(`https://api.github.com/users/${val}/followers`)
     const json = await res.json();
     console.log(json);
@@ -62,9 +78,9 @@ async function myFollowers(val) {
     //     const followersJson = await followersRes.json();
     //     console.log(followersJson.length)   
     // }
-    
-    main.innerHTML = json.map( (v, i) => {
-        
+
+    main.innerHTML = json.map((v, i) => {
+
 
         return `
         <div class="card" style="width: 18rem; margin:10px;">
@@ -73,15 +89,15 @@ async function myFollowers(val) {
                 <h6 class="card-title">${v.login}</h6>
                 <p class="card-text">UserID: ${v.id}</p>
                 <p>
-                    <button class="btn text-danger" title="Followers">
-                        <i class="fa fa-users fa-sm"></i> <span class="badge badge-pill badge-dark">${alert('will be update soon')}</span>
-                    </button>
-                    <button class="btn text-danger" title="Followings">
-                        <i class="fa fa-user-check fa-sm"></i> <span class="badge badge-pill badge-dark">${alert('will be update soon')}</span>
-                    </button>
-                    <button class="btn text-danger" title="Repos">
-                        <i class="fa fa-angle-double-up fa-sm"></i> <span class="badge badge-pill badge-dark">${alert('will be update soon')}</span>
-                    </button>
+                    <a href="https://github.com/${v.login}?tab=followers" class="btn btn-link text-danger" title="Followers">
+                        <i class="fa fa-users fa-sm"></i> <span class="badge badge-pill badge-dark">Followers</span>
+                    </a>
+                    <a href="https://github.com/${v.login}?tab=following" class="btn btn-link text-danger" title="Followings">
+                        <i class="fa fa-user-check fa-sm"></i> <span class="badge badge-pill badge-dark">Following</span>
+                    </a>
+                    <a href="https://github.com/${v.login}?tab=repositories" class="btn btn-link text-danger" title="Repos">
+                        <i class="fa fa-angle-double-up fa-sm"></i> <span class="badge badge-pill badge-dark">Repositories</span>
+                    </a>
                 </p>
                 <a href="${v.html_url}" target="_blank" class="btn btn-success btn-block">Goto Profile</a>
             </div>
